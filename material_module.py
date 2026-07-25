@@ -528,6 +528,9 @@ def run_material_module(matrix):
     btn_predict = Button(400, SCREEN_HEIGHT - 65,
                          280, 45, "Predict Properties ->",
                          CONFIRM_COLOR, CONFIRM_HOVER)
+    btn_visualize = Button(700, SCREEN_HEIGHT - 65,
+                           280, 45, "Visualize Crystal Structure ->",
+                           (40, 80, 120), (60, 120, 160))
     btn_back = Button(50, SCREEN_HEIGHT - 65,
                       200, 45, "Back to Basement")
     btn_manual_confirm = Button(500, 650, 180, 45,
@@ -714,6 +717,7 @@ def run_material_module(matrix):
                          500))
 
             btn_predict.draw(screen)
+            btn_visualize.draw(screen)
 
             # Allow going back to oxidation choice
             btn_back_to_ox.draw(screen)
@@ -831,6 +835,15 @@ def run_material_module(matrix):
                     feedback = (
                         "Northwestern predictor opened."
                         f" Enter: {final_formula}")
+                    feedback_color = SUCCESS_COLOR
+
+                if btn_visualize.is_clicked(event):
+                    webbrowser.open(
+                        "https://next-gen.materialsproject"
+                        ".org/materials")
+                    feedback = (
+                        "Materials Project opened. "
+                        f"Search for: {final_formula}")
                     feedback_color = SUCCESS_COLOR
 
                 if btn_back_to_ox.is_clicked(event):
